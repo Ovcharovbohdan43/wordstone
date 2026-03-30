@@ -96,7 +96,11 @@ export async function sendWaitlistConfirmationEmail(
     ? `<div style="margin:0 0 28px 0;">
   <img src="cid:${LOGO_CID}" alt="Wordstone" width="200" style="display:block;max-width:200px;height:auto;border:0;" />
 </div>`
-    : `<p style="margin:0 0 24px 0;font-size:22px;font-weight:600;color:#111;">Wordstone</p>`;
+    : `<p style="margin:0 0 24px 0;font-size:22px;font-weight:600;color:#fafafa;letter-spacing:-0.02em;">Wordstone</p>`;
+
+  /* Matches landing .dark body: deep base + violet/blue/teal glows (hex approx of oklch gradients). */
+  const outerBg =
+    "background-color:#18181b;background-image:radial-gradient(ellipse 100% 85% at 50% -25%, rgba(99, 102, 241, 0.42) 0%, transparent 55%),radial-gradient(ellipse 65% 55% at 100% 15%, rgba(56, 189, 248, 0.14) 0%, transparent 50%),radial-gradient(ellipse 55% 45% at 0% 85%, rgba(139, 92, 246, 0.12) 0%, transparent 50%);";
 
   const html = `
 <!DOCTYPE html>
@@ -104,33 +108,34 @@ export async function sendWaitlistConfirmationEmail(
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
 </head>
-<body style="margin:0;padding:0;background:#f6f6f6;">
-  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f6f6f6;padding:24px 16px;">
+<body style="margin:0;padding:0;background-color:#18181b;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" bgcolor="#18181b" style="${outerBg}padding:28px 16px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="100%" style="max-width:560px;background:#ffffff;border-radius:12px;padding:32px 28px;font-family:system-ui,-apple-system,Segoe UI,sans-serif;font-size:16px;line-height:1.65;color:#1a1a1a;">
+        <table role="presentation" width="100%" bgcolor="#27272a" style="max-width:560px;background-color:#27272a;border:1px solid rgba(255,255,255,0.08);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.45);padding:32px 28px;font-family:system-ui,-apple-system,Segoe UI,sans-serif;font-size:16px;line-height:1.65;color:#e4e4e7;">
           <tr>
             <td>
               ${logoBlock}
-              <p style="margin:0 0 16px 0;">Hey,</p>
-              <p style="margin:0 0 16px 0;"><strong>You're in. Welcome to Wordstone.</strong></p>
-              <p style="margin:0 0 16px 0;">You're now on the early access list — which means you'll be among the first to try a completely different way of learning a language.</p>
-              <p style="margin:0 0 8px 0;">Most people try to memorize words and rules.<br />It feels productive, but it rarely works long-term.</p>
-              <p style="margin:20px 0 12px 0;">Wordstone is built on a different idea:</p>
-              <p style="margin:0 0 6px 0;">→ You don't memorize.<br />→ You understand.</p>
-              <p style="margin:16px 0 16px 0;">Instead of switching between apps, translating every word, and losing the flow — you stay inside the story and learn naturally.</p>
-              <p style="margin:0 0 24px 0;">That's what we're building.</p>
-              <hr style="border:none;border-top:1px solid #e5e5e5;margin:24px 0;" />
-              <p style="margin:0 0 12px 0;">Right now, we're preparing the first version for early users.</p>
-              <p style="margin:0 0 24px 0;">When it's ready, you'll get access before everyone else.</p>
-              <hr style="border:none;border-top:1px solid #e5e5e5;margin:24px 0;" />
-              <p style="margin:0 0 8px 0;">Quick question (just reply to this email):</p>
-              <p style="margin:0 0 16px 0;font-size:18px;">👉 What's your biggest struggle when trying to read in English?</p>
-              <p style="margin:0 0 24px 0;">I read every reply — and it helps shape the product.</p>
-              <hr style="border:none;border-top:1px solid #e5e5e5;margin:24px 0;" />
-              <p style="margin:0 0 4px 0;">Talk soon,<br /><strong>Wordstone</strong></p>
-              <p style="margin:20px 0 0 0;font-size:14px;color:#555;">P.S. You're early. We'll keep it that way.</p>
+              <p style="margin:0 0 16px 0;color:#fafafa;">Hey,</p>
+              <p style="margin:0 0 16px 0;color:#fcd34d;font-size:17px;"><strong>You're in. Welcome to Wordstone.</strong></p>
+              <p style="margin:0 0 16px 0;color:#d4d4d8;">You're now on the early access list — which means you'll be among the first to try a completely different way of learning a language.</p>
+              <p style="margin:0 0 8px 0;color:#a1a1aa;">Most people try to memorize words and rules.<br />It feels productive, but it rarely works long-term.</p>
+              <p style="margin:20px 0 12px 0;color:#fafafa;">Wordstone is built on a different idea:</p>
+              <p style="margin:0 0 6px 0;color:#e4e4e7;">→ You don't memorize.<br />→ You understand.</p>
+              <p style="margin:16px 0 16px 0;color:#d4d4d8;">Instead of switching between apps, translating every word, and losing the flow — you stay inside the story and learn naturally.</p>
+              <p style="margin:0 0 24px 0;color:#d4d4d8;">That's what we're building.</p>
+              <hr style="border:none;border-top:1px solid rgba(255,255,255,0.12);margin:24px 0;" />
+              <p style="margin:0 0 12px 0;color:#d4d4d8;">Right now, we're preparing the first version for early users.</p>
+              <p style="margin:0 0 24px 0;color:#d4d4d8;">When it's ready, you'll get access before everyone else.</p>
+              <hr style="border:none;border-top:1px solid rgba(255,255,255,0.12);margin:24px 0;" />
+              <p style="margin:0 0 8px 0;color:#a1a1aa;">Quick question (just reply to this email):</p>
+              <p style="margin:0 0 16px 0;font-size:18px;color:#fcd34d;">👉 What's your biggest struggle when trying to read in English?</p>
+              <p style="margin:0 0 24px 0;color:#a1a1aa;">I read every reply — and it helps shape the product.</p>
+              <hr style="border:none;border-top:1px solid rgba(255,255,255,0.12);margin:24px 0;" />
+              <p style="margin:0 0 4px 0;color:#fafafa;">Talk soon,<br /><strong>Wordstone</strong></p>
+              <p style="margin:20px 0 0 0;font-size:14px;color:#71717a;">P.S. You're early. We'll keep it that way.</p>
             </td>
           </tr>
         </table>
