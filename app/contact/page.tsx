@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Get in touch with wordstone via email or Reddit.",
 };
 
-const SUPPORT_EMAIL = "support@wordstone.app";
+const SUPPORT_EMAIL = "support@wordstone.space";
 const REDDIT_URL = "https://www.reddit.com/user/SpiritualAd8605/";
 
 export default function ContactPage() {

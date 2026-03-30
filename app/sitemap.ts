@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://yourdomain.com";
+  const baseUrl = "https://wordstone.space";
   const lastModified = new Date();
 
   return [

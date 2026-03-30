@@ -61,8 +61,7 @@ npm run lint
 
 ## Limitations
 
-- `metadataBase`, sitemap, and robots currently use placeholder domain `https://yourdomain.com`.
-- Replace with production domain before release.
+- Production site URL: `https://wordstone.space` (`metadataBase`, sitemap, robots).
 - Blog posts are static routes in `app/blog/`, not a full CMS.
 - Without `RESEND_API_KEY`, waitlist signup still works (Supabase insert), but no confirmation email is sent (warning in server logs).
 - Production: verify your domain in Resend and set `RESEND_FROM` to an address on that domain (avoid `onboarding@resend.dev` in production).
@@ -103,3 +102,4 @@ npm run lint
 - [2026-03-30] - Added: Resend confirmation email after new waitlist signup (`RESEND_API_KEY`, optional `RESEND_FROM`, `RESEND_REPLY_TO`).
 - [2026-03-30] - Changed: Waitlist email copy (welcome + onboarding narrative); inline logo from `public/email/wordstone-logo.png` (CID attachment).
 - [2026-03-30] - Changed: Waitlist API returns `emailSent` / `emailIssue`; success UI warns if email was not sent; improved Resend logging.
+- [2026-03-30] - Changed: Production domain `wordstone.space` (metadata, sitemap, robots); contact emails `support@` / `privacy@wordstone.space`.

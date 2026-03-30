@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://yourdomain.com"),
+  metadataBase: new URL("https://wordstone.space"),
   title: "Learn English by Reading Books | Wordstone",
   description:
     "Read real books in English with smart translation. Understand words in context and stop memorizing vocabulary. Join Wordstone beta.",

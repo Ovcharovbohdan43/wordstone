@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 const LAST_UPDATED = "March 30, 2026";
-const CONTACT_EMAIL = "privacy@wordstone.app";
+const CONTACT_EMAIL = "privacy@wordstone.space";
 const GOVERNING_LAW_COUNTRY = "your country";
 
 export default function TermsPage() {
