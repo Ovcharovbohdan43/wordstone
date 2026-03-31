@@ -118,7 +118,7 @@ export default function Home() {
                 Limited beta access
               </p>
               <h1 className="text-balance text-4xl font-medium tracking-tight text-foreground md:text-5xl lg:text-6xl xl:text-7xl lg:leading-[1.05]">
-                Learn English by Reading Books
+                Finally read books in English — without translating every word
               </h1>
               <p className="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl lg:mx-0 lg:mt-8">
                 Understand real books instantly - without translating every word.
