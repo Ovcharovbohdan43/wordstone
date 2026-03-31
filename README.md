@@ -13,6 +13,7 @@ The project is built with Next.js App Router and includes:
 - Technical SEO endpoints via `app/robots.ts` and `app/sitemap.ts`.
 - A blog article route designed to target long-tail search intent.
 - Waitlist API (`POST /api/waitlist`) saves emails to Supabase and sends a confirmation email via [Resend](https://resend.com/) when `RESEND_API_KEY` is set.
+- Unsubscribe endpoint (`GET`/`POST /api/unsubscribe`) supports footer link + one-click unsubscribe (`List-Unsubscribe` headers).
 
 ## How to Use
 
@@ -29,6 +30,7 @@ npm run dev
 ```
 
 3. Copy `.env.example` to `.env.local` and set Supabase URL/key plus `RESEND_API_KEY` (and `RESEND_FROM` with your verified domain in production).
+4. Set `UNSUBSCRIBE_SECRET` to enable signed unsubscribe tokens and one-click unsubscribe security.
 
 4. Open `http://localhost:3000`.
 
@@ -58,12 +60,14 @@ npm run lint
 - Open Graph tags should include title, description, image, and type.
 
 4. Waitlist email: submit the early-access form; if `RESEND_API_KEY` is set, the address should receive “You're on the Wordstone early access list”. Duplicate emails in the DB do not trigger another message.
+5. Unsubscribe flow: open `/api/unsubscribe?email=<email>&token=<token>` and verify the email is marked unsubscribed in `waitlist_emails.unsubscribed_at`.
 
 ## Limitations
 
 - Production site URL: `https://wordstone.space` (`metadataBase`, sitemap, robots).
 - Blog posts are static routes in `app/blog/`, not a full CMS.
 - Without `RESEND_API_KEY`, waitlist signup still works (Supabase insert), but no confirmation email is sent (warning in server logs).
+- Without `UNSUBSCRIBE_SECRET`, unsubscribe links still work, but token verification is disabled (not recommended for production).
 - Production: verify your domain in Resend and set `RESEND_FROM` to an address on that domain (avoid `onboarding@resend.dev` in production).
 - **Email not arriving:** API returns `emailSent` in the JSON response. Check server logs for `[waitlist] Resend error:` — common causes: missing/invalid `RESEND_API_KEY`, unverified `RESEND_FROM`, or Resend test mode only allowing mail to your Resend account address. Confirm in [Resend Dashboard → Logs](https://resend.com/emails).
 
@@ -77,13 +81,17 @@ npm run lint
 - `app/blog/how-to-read-books-in-english-without-translating-every-word/page.tsx`
 - `app/blog/why-learning-language-through-reading-works-research/page.tsx`
 - `app/api/waitlist/route.ts`
+- `app/api/unsubscribe/route.ts`
 - `lib/email/waitlist-confirmation.ts`
+- `lib/email/unsubscribe.ts`
 - `public/email/wordstone-logo.png` (waitlist email header)
+- `public/email/waitlist-feedback-template.html`
+- `supabase/waitlist.sql`
 
 ## Version / Update Date
 
 - Version: `0.1.0`
-- Updated: `2026-03-30`
+- Updated: `2026-03-31`
 
 ## Changelog
 
@@ -103,3 +111,4 @@ npm run lint
 - [2026-03-30] - Changed: Waitlist email copy (welcome + onboarding narrative); inline logo from `public/email/wordstone-logo.png` (CID attachment).
 - [2026-03-30] - Changed: Waitlist API returns `emailSent` / `emailIssue`; success UI warns if email was not sent; improved Resend logging.
 - [2026-03-30] - Changed: Production domain `wordstone.space` (metadata, sitemap, robots); contact emails `support@` / `privacy@wordstone.space`.
+- [2026-03-31] - Added: Signed unsubscribe flow (`/api/unsubscribe`, one-click headers, footer unsubscribe link), DB fields for unsubscribe tracking, and env docs for `UNSUBSCRIBE_SECRET`.

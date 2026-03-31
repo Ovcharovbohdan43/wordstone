@@ -8,6 +8,10 @@ create table if not exists public.waitlist_emails (
   constraint waitlist_emails_email_key unique (email)
 );
 
+alter table public.waitlist_emails
+  add column if not exists unsubscribed_at timestamptz,
+  add column if not exists unsubscribe_source text;
+
 alter table public.waitlist_emails enable row level security;
 
 -- If you use SUPABASE_SERVICE_ROLE_KEY in the API route, RLS is bypassed — no policy needed for inserts.

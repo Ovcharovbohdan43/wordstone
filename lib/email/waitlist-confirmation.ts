@@ -2,6 +2,7 @@ import { readFile } from "fs/promises";
 import path from "path";
 
 import { Resend } from "resend";
+import { buildUnsubscribeToken } from "@/lib/email/unsubscribe";
 
 const LOGO_CID = "wordstone-logo";
 const LOGO_FILENAME = "wordstone-logo.png";
@@ -35,6 +36,12 @@ export async function sendWaitlistConfirmationEmail(
   const replyTo = process.env.RESEND_REPLY_TO?.trim();
 
   const subject = "You're in — welcome to Wordstone";
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL?.trim() || "https://wordstone.space";
+  const unsubscribeSecret = process.env.UNSUBSCRIBE_SECRET?.trim();
+  const unsubscribeToken = unsubscribeSecret
+    ? buildUnsubscribeToken(to, unsubscribeSecret)
+    : "";
+  const unsubscribeUrl = `${appUrl.replace(/\/+$/, "")}/api/unsubscribe?email=${encodeURIComponent(to)}${unsubscribeToken ? `&token=${encodeURIComponent(unsubscribeToken)}` : ""}`;
 
   const text = [
     "Hey,",
@@ -136,6 +143,10 @@ export async function sendWaitlistConfirmationEmail(
               <hr style="border:none;border-top:1px solid rgba(255,255,255,0.12);margin:24px 0;" />
               <p style="margin:0 0 4px 0;color:#fafafa;">Talk soon,<br /><strong>Wordstone</strong></p>
               <p style="margin:20px 0 0 0;font-size:14px;color:#71717a;">P.S. You're early. We'll keep it that way.</p>
+              <p style="margin:16px 0 0 0;font-size:12px;color:#71717a;">
+                Prefer not to receive these emails?
+                <a href="${unsubscribeUrl}" style="color:#a1a1aa;text-decoration:underline;">Unsubscribe</a>
+              </p>
             </td>
           </tr>
         </table>
@@ -155,6 +166,10 @@ export async function sendWaitlistConfirmationEmail(
     text,
     html,
     tags: [{ name: "category", value: "waitlist" }],
+    headers: {
+      "List-Unsubscribe": `<${unsubscribeUrl}>`,
+      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+    },
     ...(replyTo ? { replyTo } : {}),
     ...(logoBuffer
       ? {
