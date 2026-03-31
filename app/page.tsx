@@ -135,6 +135,34 @@ export default function Home() {
                 <p className="text-sm text-muted-foreground">
                   Free early access - Takes 10 seconds
                 </p>
+                <div className="mt-2 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/30 px-3 py-1.5 text-xs text-foreground/90 backdrop-blur-sm">
+                    <svg
+                      viewBox="0 0 24 24"
+                      aria-hidden
+                      className="size-4 fill-current text-foreground/90"
+                    >
+                      <path d="M4.8 3.2a1 1 0 0 0-.5.9v15.8a1 1 0 0 0 1.5.9l12.6-7.9a1 1 0 0 0 0-1.7L5.8 3.3a1 1 0 0 0-1 0z" />
+                    </svg>
+                    <span>Google Play</span>
+                    <span className="rounded-full bg-yellow-400/15 px-1.5 py-0.5 text-[10px] font-medium text-yellow-300">
+                      Coming soon
+                    </span>
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/30 px-3 py-1.5 text-xs text-foreground/90 backdrop-blur-sm">
+                    <svg
+                      viewBox="0 0 24 24"
+                      aria-hidden
+                      className="size-4 fill-current text-foreground/90"
+                    >
+                      <path d="M16.2 12.4c0-1.8 1.5-2.7 1.5-2.7a3.1 3.1 0 0 0-2.4-1.4c-1-.1-2 .6-2.6.6-.7 0-1.5-.6-2.4-.5-1.2 0-2.3.7-2.9 1.7-1.2 2.1-.3 5.2.9 6.9.6.8 1.3 1.8 2.2 1.7.9 0 1.2-.5 2.2-.5 1.1 0 1.4.5 2.3.5.9 0 1.5-.8 2.1-1.6.7-.9 1-1.8 1-1.9-.1 0-1.9-.8-1.9-2.8zm-1.6-5.1c.4-.5.7-1.2.6-1.9-.6 0-1.3.4-1.7.9-.4.4-.7 1.1-.6 1.8.7.1 1.3-.3 1.7-.8z" />
+                    </svg>
+                    <span>App Store</span>
+                    <span className="rounded-full bg-yellow-400/15 px-1.5 py-0.5 text-[10px] font-medium text-yellow-300">
+                      Coming soon
+                    </span>
+                  </span>
+                </div>
               </div>
             </div>
             <div className="animate-in fade-in slide-in-from-bottom-4 fill-mode-both delay-150 duration-1000 motion-reduce:delay-0">
