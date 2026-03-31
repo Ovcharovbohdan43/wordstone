@@ -121,7 +121,7 @@ export default function Home() {
                 Finally read books in English — without translating every word
               </h1>
               <p className="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl lg:mx-0 lg:mt-8">
-                Understand real books instantly - without translating every word.
+                Stop translating. Start understanding real English.
               </p>
               <div className="mt-10 flex flex-col items-center gap-3 lg:items-start">
                 <Button
@@ -170,7 +170,7 @@ export default function Home() {
             </div>
           </div>
           <p className="mx-auto mt-12 max-w-6xl text-center text-sm font-medium tracking-wide text-foreground/90 md:mt-14">
-            Join 200+ early users
+            Join 200+ early users already learning this way
           </p>
         </section>
 
